@@ -9,7 +9,7 @@ private:
     GLuint location;
     bool data_loaded;
 
-    void load_data() const;
+    void load_data();
 
 protected:
     GLuint buffer_id;
@@ -20,7 +20,7 @@ protected:
 public:
     Buffer(GLuint location=0);
     virtual ~Buffer();
-    void activate() const;
+    void activate();
     void deactivate() const;
 
     virtual GLint dimension() const;

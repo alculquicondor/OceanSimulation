@@ -10,14 +10,15 @@ Buffer::~Buffer() {
 }
 
 
-void Buffer::load_data() const {
+void Buffer::load_data() {
     glBindBuffer(GL_ARRAY_BUFFER, buffer_id);
     glBufferData(GL_ARRAY_BUFFER, data_size(), data(), GL_STATIC_DRAW);
+    data_loaded = true;
 }
 
 
-void Buffer::activate() const {
-    if (!data_loaded)
+void Buffer::activate() {
+    if (not data_loaded)
         load_data();
     glEnableVertexAttribArray(location);
     glBindBuffer(GL_ARRAY_BUFFER, buffer_id);
