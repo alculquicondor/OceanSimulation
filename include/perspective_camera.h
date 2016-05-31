@@ -12,7 +12,8 @@ private:
     glm::mat4 projection;
 public:
     PerspectiveCamera(int width, int height, float field_of_view, float near=1, float far=50);
-    virtual glm::mat4 get_vp() const;
+    virtual glm::mat4 get_vp() const override;
+    virtual glm::mat4 get_v() const override;
     virtual void look_at(glm::vec3 eye, glm::vec3 center, glm::vec3 up);
 };
 

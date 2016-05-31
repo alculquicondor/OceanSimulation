@@ -9,3 +9,8 @@ OrthoCamera::OrthoCamera(int width, int height, float zoom, float depth) {
 glm::mat4 OrthoCamera::get_vp() const {
     return vp;
 }
+
+
+glm::mat4 OrthoCamera::get_v() const {
+    return glm::mat4(1);
+}

@@ -28,10 +28,17 @@ void Drawable::draw(Camera *camera, float time) {
     if (uv != nullptr)
         uv->activate();
 
-    glm::mat4 mvp = camera != nullptr ?
-                    camera->get_vp() * get_model(time) :
-                    get_model(time);
+    glm::mat4 mvp, m = get_model(time), v;
+    if (camera != nullptr) {
+        mvp = camera->get_vp() * m;
+        v = camera->get_v();
+    } else {
+        mvp = m;
+        v = glm::mat4(1);
+    }
+    program->set_v(v);
     program->set_mvp(mvp);
+    program->set_m(m);
     draw_geometry();
 
     geometry->deactivate();

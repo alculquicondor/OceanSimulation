@@ -9,7 +9,11 @@ PerspectiveCamera::PerspectiveCamera(int width, int height, float field_of_view,
 
 
 glm::mat4 PerspectiveCamera::get_vp() const {
-    return projection * view;
+    return projection * get_v();
+}
+
+glm::mat4 PerspectiveCamera::get_v() const {
+    return view;
 }
 
 void PerspectiveCamera::look_at(glm::vec3 eye, glm::vec3 center, glm::vec3 up) {

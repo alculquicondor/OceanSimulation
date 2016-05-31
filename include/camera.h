@@ -7,6 +7,7 @@
 class Camera {
 public:
     virtual glm::mat4 get_vp() const = 0;
+    virtual glm::mat4 get_v() const = 0;
 };
 
 #endif //HELLO_OPENGL_CAMERA_H

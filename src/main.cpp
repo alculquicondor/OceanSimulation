@@ -14,7 +14,7 @@ using namespace std;
 
 
 PerspectiveCamera *camera;
-float cam_dist = 20;
+float cam_dist = 30;
 OceanProgram *program = nullptr;
 
 class Center : public Drawable {
@@ -43,7 +43,7 @@ Center *center;
 
 void scroll(GLFWwindow* window, double x_offset, double y_offset) {
     center->angle_z -= x_offset * .02;
-    cam_dist -= y_offset * .1;
+    cam_dist -= y_offset * .4;
     camera->look_at(glm::vec3(0, -cam_dist, cam_dist), glm::vec3(0, 0, 0), glm::vec3(0, 0, 1));
 }
 
@@ -57,7 +57,7 @@ public:
 
     void init() {
         gizmo = new Gizmo(new MvpProgram, center);
-        ocean = new Ocean(200, 200, 0.5, ::program, center);
+        ocean = new Ocean(200, 200, 1, ::program, center);
         add(gizmo);
         add(ocean);
         set_wheel_callback(scroll);
@@ -72,16 +72,21 @@ public:
 
     virtual void process_events() {
         if (key_state(GLFW_KEY_LEFT))
-            center->move_horizontal(.2f);
+            center->move_horizontal(.5f);
         if (key_state(GLFW_KEY_RIGHT))
-            center->move_horizontal(-.2f);
+            center->move_horizontal(-.5f);
         if (key_state(GLFW_KEY_UP))
-            center->move_vertical(-.2f);
+            center->move_vertical(-.5f);
         if (key_state(GLFW_KEY_DOWN))
-            center->move_vertical(.2f);
+            center->move_vertical(.5f);
     }
 
     virtual void before_iteration(float time) {
+        ::program->set_uniform("lightPosition",
+                               glm::vec3(center->get_model(time) * glm::vec4(0, 0, 200, 1)));
+        ::program->set_uniform("lightColor", {.85, .85, .85});
+        ::program->set_uniform("ambientLight", {.25, .25, .25});
+
         ::program->set_uniform("time", time);
         ::program->set_waves();
     }
@@ -92,7 +97,7 @@ OceanScene *scene = nullptr;
 
 
 int main() {
-    camera = new PerspectiveCamera(1000, 700, 1.5, 1, 200);
+    camera = new PerspectiveCamera(1000, 700, 1.5, 1, 400);
     scene = new OceanScene(camera);
     center = new Center();
     program = new OceanProgram;
