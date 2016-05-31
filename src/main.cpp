@@ -57,7 +57,7 @@ public:
 
     void init() {
         gizmo = new Gizmo(new MvpProgram, center);
-        ocean = new Ocean(100, 100, 2, ::program, center);
+        ocean = new Ocean(200, 200, 0.5, ::program, center);
         add(gizmo);
         add(ocean);
         set_wheel_callback(scroll);
