@@ -41,7 +41,7 @@ void Ocean::draw_geometry() {
 
 OceanUV::OceanUV(int nx, int ny, float dist) : Buffer(2), uv(std::size_t(4 * ny * (2 * nx + 1))) {
     std::size_t p = 0;
-    dist /= 20;
+    dist /= 40;
     for (int i = 0; i < 2 * ny; ++i) {
         uv[p++] = {0, dist * i};
         for (int j = 0; j < 2 * ny; ++j) {

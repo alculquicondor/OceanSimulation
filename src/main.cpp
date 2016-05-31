@@ -57,7 +57,7 @@ public:
 
     void init() {
         gizmo = new Gizmo(new MvpProgram, center);
-        ocean = new Ocean(200, 200, 1, ::program, center);
+        ocean = new Ocean(200, 200, 1.5, ::program, center);
         add(gizmo);
         add(ocean);
         set_wheel_callback(scroll);
@@ -83,7 +83,7 @@ public:
 
     virtual void before_iteration(float time) {
         ::program->set_uniform("lightPosition",
-                               glm::vec3(center->get_model(time) * glm::vec4(0, 0, 200, 1)));
+                               glm::vec3(center->get_model(time) * glm::vec4(0, 0, 300, 1)));
         ::program->set_uniform("lightColor", {.85, .85, .85});
         ::program->set_uniform("ambientLight", {.25, .25, .25});
 
@@ -97,7 +97,7 @@ OceanScene *scene = nullptr;
 
 
 int main() {
-    camera = new PerspectiveCamera(1000, 700, 1.5, 1, 400);
+    camera = new PerspectiveCamera(1000, 700, 1.5, 1, 500);
     scene = new OceanScene(camera);
     center = new Center();
     program = new OceanProgram;
