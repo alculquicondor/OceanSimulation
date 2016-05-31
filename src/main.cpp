@@ -84,7 +84,7 @@ public:
     virtual void before_iteration(float time) {
         ::program->set_uniform("lightPosition",
                                glm::vec3(center->get_model(time) * glm::vec4(0, 0, 300, 1)));
-        ::program->set_uniform("lightColor", {.85, .85, .85});
+        ::program->set_uniform("lightColor", {.8, .8, .8});
         ::program->set_uniform("ambientLight", {.25, .25, .25});
 
         ::program->set_uniform("time", time);

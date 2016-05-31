@@ -14,7 +14,7 @@ uniform vec3 ambientLight;
 
 void main() {
     //vec3 materialColor = texture(textureSampler, UV).rgb;
-    vec3 materialColor = vec3(.2, .6, .7);
+    vec3 materialColor = vec3(.1, .6, .7);
     vec3 ambientColor = ambientLight * materialColor;
 
     vec3 n = normalize(normal_cameraSpace);
