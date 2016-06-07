@@ -37,7 +37,10 @@ Texture::Texture(const std::string &filename, GLenum image_format, GLint interna
 }
 
 
-void Texture::load() const {
-    if (texture_id != 0)
+void Texture::load(GLenum texture_unit, int uniform) const {
+    if (texture_id != 0) {
+        glActiveTexture(texture_unit);
         glBindTexture(GL_TEXTURE_2D, texture_id);
+        glUniform1i(uniform, texture_unit - GL_TEXTURE0);
+    }
 }

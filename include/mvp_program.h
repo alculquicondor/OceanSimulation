@@ -13,6 +13,7 @@ public:
     void set_mvp(glm::mat4 mvp);
     void set_m(glm::mat4 m);
     void set_v(glm::mat4 v);
+    void set_mv(glm::mat3 mv);
 };
 
 #endif //HELLO_OPENGL_MVP_PROGRAM_H

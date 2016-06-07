@@ -15,7 +15,7 @@ public:
             GLint level = 0,
             GLint border = 0);
 
-    void load() const;
+    void load(GLenum texture_unit=GL_TEXTURE0, int uniform=0) const;
 
 private:
     GLuint texture_id;

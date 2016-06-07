@@ -118,6 +118,11 @@ void Program::set_uniform(const std::string &name, glm::mat4 value) {
 }
 
 
+void Program::set_uniform(const std::string &name, glm::mat3 value) {
+    glUniformMatrix3fv(set_uniform(name), 1, GL_FALSE, &value[0][0]);
+}
+
+
 void Program::set_uniform(const std::string &name, const std::vector<glm::vec4> value) {
     glUniform4fv(set_uniform(name), (GLsizei)value.size(), &value[0].x);
 }

@@ -4,8 +4,10 @@
 Ocean::Ocean(int nx, int ny, float dist, MvpProgram *program, Drawable *parent) :
         Buffer(), nx(nx), ny(ny), mesh(std::size_t(4 * ny * (2 * nx + 1))),
         Drawable(program, this, GL_TRIANGLE_STRIP,
-                 new UniformColor(glm::vec4(.9f, .7f, .2f, 1.f), 4 * ny * (2 * nx + 1)),
+                 new UniformColor(glm::vec4(1.f, .6f, .2f, 1.f), 4 * ny * (2 * nx + 1)),
                 new Texture("ocean.tga", GL_BGR), new OceanUV(nx, ny, dist), parent) {
+    Texture *n = new Texture("normal.tga", GL_BGR);
+    set_normal_texture(n);
     std::size_t p = 0;
     for (int i = -ny; i < ny; ++i) {
         mesh[p++] = {-dist * nx, dist * i, 0};
@@ -41,7 +43,7 @@ void Ocean::draw_geometry() {
 
 OceanUV::OceanUV(int nx, int ny, float dist) : Buffer(2), uv(std::size_t(4 * ny * (2 * nx + 1))) {
     std::size_t p = 0;
-    dist /= 40;
+    dist /= 60;
     for (int i = 0; i < 2 * ny; ++i) {
         uv[p++] = {0, dist * i};
         for (int j = 0; j < 2 * ny; ++j) {

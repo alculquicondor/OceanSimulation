@@ -22,4 +22,4 @@ target_link_libraries(ocean ${GLFW_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARI
 
 add_subdirectory(shaders)
 
-file(COPY ocean.tga DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
+file(COPY ocean.tga normal.tga DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)

@@ -13,6 +13,7 @@ public:
              Texture *texture = nullptr, Buffer *uv = nullptr, Drawable *parent = nullptr);
 
     void set_parent(Drawable *parent);
+    void set_normal_texture(Texture *texture);
 
     virtual ~Drawable();
     virtual void draw(Camera *camera, float time=0);
@@ -27,7 +28,7 @@ private:
     MvpProgram *program;
     Buffer *color;
     Drawable *parent;
-    Texture *texture;
+    Texture *diffuse_texture, *normal_texture;
     Buffer *uv;
 };
 

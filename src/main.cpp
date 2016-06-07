@@ -14,7 +14,7 @@ using namespace std;
 
 
 PerspectiveCamera *camera;
-float cam_dist = 30;
+float cam_dist = 40;
 OceanProgram *program = nullptr;
 
 class Center : public Drawable {
@@ -83,7 +83,7 @@ public:
 
     virtual void before_iteration(float time) {
         ::program->set_uniform("lightPosition",
-                               glm::vec3(center->get_model(time) * glm::vec4(0, 0, 300, 1)));
+                               glm::vec3(center->get_model(time) * glm::vec4(0, 0, 400, 1)));
         ::program->set_uniform("lightColor", {.8, .8, .8});
         ::program->set_uniform("ambientLight", {.25, .25, .25});
 
@@ -97,7 +97,7 @@ OceanScene *scene = nullptr;
 
 
 int main() {
-    camera = new PerspectiveCamera(1000, 700, 1.5, 1, 500);
+    camera = new PerspectiveCamera(1000, 700, 1.5, 1, 1000);
     scene = new OceanScene(camera);
     center = new Center();
     program = new OceanProgram;

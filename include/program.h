@@ -15,14 +15,16 @@ private:
     GLuint program_id;
     std::map<std::string, GLint> uniforms;
 
-    GLint set_uniform(const std::string &name);
 public:
     Program(const char *vertex_shader, const char *fragment_shader);
     virtual void activate() const;
 
+    GLint set_uniform(const std::string &name);
+
     void set_uniform(const std::string &name, glm::vec3 value);
     void set_uniform(const std::string &name, glm::vec4 value);
     void set_uniform(const std::string &name, glm::mat4 value);
+    void set_uniform(const std::string &name, glm::mat3 value);
     void set_uniform(const std::string &name, const std::vector<glm::vec4> value);
     void set_uniform(const std::string &name, float value);
 };

@@ -18,3 +18,8 @@ void MvpProgram::set_m(glm::mat4 m) {
 void MvpProgram::set_v(glm::mat4 v) {
     set_uniform("V", v);
 }
+
+
+void MvpProgram::set_mv(glm::mat3 mv) {
+    set_uniform("MV", mv);
+}
